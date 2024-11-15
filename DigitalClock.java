@@ -9,34 +9,37 @@ public class DigitalClock {
     private SimpleDateFormat timeFormat;
 
     public DigitalClock() {
-        // Step 1: Set up the JFrame
-        frame = new JFrame("Digital Clock");
-        frame.setSize(300, 150);               // Set the window size
+      
+        frame = new JFrame("solohs Digital Clock");
+        frame.setSize(300, 150);            
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // Step 2: Set up the JLabel
-        timeLabel = new JLabel();               // Initialize the label
+       
+        timeLabel = new JLabel();            
         timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        timeLabel.setFont(new Font("Arial", Font.PLAIN, 36));  // Set font size and style
+        
+        timeLabel.setFont(new Font("Script MT Bold", Font.PLAIN, 40));  
         frame.add(timeLabel);
+        timeLabel.setBackground(Color.BLACK);    
+        timeLabel.setForeground(Color.CYAN);    
+        timeLabel.setOpaque(true);  
+        
+        timeFormat = new SimpleDateFormat("HH:mm:ss"); 
 
-        // Step 3: Set up time formatting
-        timeFormat = new SimpleDateFormat("HH:mm:ss"); // Format the time as "HH:mm:ss"
-
-        // Step 4: Create a Timer to update the time
+       
         Timer timer = new Timer(1000, e -> updateTime());
         timer.start();
 
         frame.setVisible(true);
     }
 
-    // Method to update the JLabel with the current time
+   
     private void updateTime() {
-        String currentTime = timeFormat.format(new Date()); // Get the current time
-        timeLabel.setText(currentTime);                     // Update the label
+        String currentTime = timeFormat.format(new Date());
+        timeLabel.setText(currentTime);                     
     }
 
-    // Main method to run the clock
+    
     public static void main(String[] args) {
         new DigitalClock();
     }
